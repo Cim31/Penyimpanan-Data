@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifikasi Real-Time</title>
+</head>
+<body>
+    <h1>Notifikasi Real-Time</h1>
+    <div id="notifications"></div>
+
+    <script>
+        const socket = new WebSocket('ws://localhost:8080');
+
+        socket.onmessage = (event) => {
+            const notifications = document.getElementById('notifications');
+            const newNotification = document.createElement('p');
+            newNotification.textContent = event.data;
+            notifications.appendChild(newNotification);
+        };
+    </script>
+</body>
+</html>
